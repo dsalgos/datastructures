@@ -12,6 +12,9 @@ import com.dsalgos.datastructures.linkedlist.list.List;
 public class SinglyLinkedList<T> implements List<T>{
 
 	@Override
+	/**
+	 * 
+	 */
 	public void add(T data) {
 		
 	}
