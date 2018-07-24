@@ -5,7 +5,7 @@ package com.dsalgos.datastructures.linkedlist.node;
 
 
 /**
- * @author 608952343
+ * @author 
  *
  */
 public class Node<T> {
@@ -42,4 +42,9 @@ public class Node<T> {
 		this.next = next;
 	}
 	
+	
+	@Override
+	public String toString() {
+		return "[" + data + "]";
+	}
 }

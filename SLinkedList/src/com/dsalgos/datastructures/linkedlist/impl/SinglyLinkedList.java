@@ -6,12 +6,14 @@ import com.dsalgos.datastructures.linkedlist.node.Node;
 /**
  * 
  * 
- * @author 608952343 
+ * @author  
  *
  * @param <T>
  */
 public class SinglyLinkedList<T> implements List<T>{
 
+	private int size;
+	
 	private Node<T> head;
 	private Node<T> tail;
 	
@@ -25,11 +27,11 @@ public class SinglyLinkedList<T> implements List<T>{
 		Node<T> node = new Node<>(data);
 		if(head == null) {
 			head = node;
-			tail = node;
-		} else if(head.getNext() != null) {
+		} else {
 			tail.setNext(node);
-			tail = node;
-		}		
+		}
+		tail = node;
+		size++;
 	}
 	
 	public void add(T data, int position) {
@@ -37,12 +39,82 @@ public class SinglyLinkedList<T> implements List<T>{
 	}
 
 	@Override
-	public void remove(Object o) {
+	public boolean remove(Object o) {
+		
+		/*
+		 * if its an instance of type Node,
+		 * find it and remove it.
+		 */		
+		if((o == null)) {
+			
+			for(Node<T> current = head, prev = head; current != null; current = current.getNext()) {
+				if(current.getData() == null) {
+					if(current == head) {
+						head = current.getNext();
+					} else if(current.getNext() == null) {
+						tail = prev;
+						prev.setNext(null);
+					}  else {
+						prev.setNext(current.getNext());
+					}
+					
+					--size;
+					current = null;
+					break;
+				}
+				
+				prev = current;				
+			}			
+		} else {
+			for(Node<T> current = head, prev = head; current != null; current = current.getNext()) {		
+				if(o.equals(current.getData())) {
 
+					if(current == head) {
+						head = current.getNext();
+					} else if(current.getNext() == null) {
+						System.out.println(" current : " + current + " current next : " + current.getNext() + " prev : " + prev);
+						tail = prev;
+						prev.setNext(null);
+					} else {
+						prev.setNext(current.getNext());
+					}
+					
+					--size;
+					current = null;
+					break;
+				}
+				prev = current;				
+			}
+			
+		}
+		
+		/*
+		 * return false otherwise
+		 */
+		return false;
 	}
 
 	@Override
-	public void size() {
-		
+	public int size() {
+		return this.size;
 	}
+	
+	@Override
+	public String toString() {
+		
+		if(head == null) {
+			return "[ ]";
+		}
+		
+		StringBuilder listElements = new StringBuilder("[ ");
+		Node<T> current = head;
+		while(current != null) {			
+			listElements.append(current.getData()).append(" , ");
+			current = current.getNext();
+		}
+		
+		listElements.setLength(listElements.length()-3);
+		listElements.append(" ]");
+		return listElements.toString();
+	}	
 }

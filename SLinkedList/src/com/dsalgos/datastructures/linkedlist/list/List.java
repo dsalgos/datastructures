@@ -8,8 +8,8 @@ public interface List<T> {
 	 */
 	void add(T data);
 	
-	void remove(Object o);
+	boolean remove(Object o);
 	
-	void size();
+	int size();
 	
 }
