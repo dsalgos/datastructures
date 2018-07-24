@@ -72,7 +72,6 @@ public class SinglyLinkedList<T> implements List<T>{
 					if(current == head) {
 						head = current.getNext();
 					} else if(current.getNext() == null) {
-						System.out.println(" current : " + current + " current next : " + current.getNext() + " prev : " + prev);
 						tail = prev;
 						prev.setNext(null);
 					} else {
