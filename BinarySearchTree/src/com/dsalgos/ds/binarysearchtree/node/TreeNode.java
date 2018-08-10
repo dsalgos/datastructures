@@ -32,7 +32,18 @@ public class TreeNode<T> {
 	 * parent of the current node
 	 */
 	private TreeNode<T> parent;
-
+	
+	
+	public TreeNode(T data) {
+		this(data, null, null);
+	}
+	
+	public TreeNode(T data, TreeNode<T> left, TreeNode<T> right) {
+		this.data = data;
+		this.left = left;
+		this.right = right;
+	}
+	
 	/**
 	 * @return the data
 	 */
@@ -111,4 +122,9 @@ public class TreeNode<T> {
     static final boolean valEquals(Object o1, Object o2) {
         return (o1==null ? o2==null : o1.equals(o2));
     }
+    
+    @Override
+	public String toString() {
+		return "[" + data + "]";
+	}
 }
