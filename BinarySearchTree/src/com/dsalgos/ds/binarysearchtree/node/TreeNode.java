@@ -3,6 +3,8 @@
  */
 package com.dsalgos.ds.binarysearchtree.node;
 
+import java.util.Comparator;
+
 /**
  * Node structure to contain the data
  * and the reference to its children
@@ -127,4 +129,5 @@ public class TreeNode<T> {
 	public String toString() {
 		return "[" + data + "]";
 	}
+
 }
